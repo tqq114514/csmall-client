@@ -7,7 +7,21 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: HomeView
+    component: HomeView,
+    children:[
+      {
+        path: '/sys-admin/product/album-list/add-new',
+        component: () => import('../views/sys-admin/product/AlbumAddNewView.vue')
+      },
+      {
+        path: '/sys-admin/product/album-list',
+        component: () => import('../views/sys-admin/product/AlbumListView.vue')
+      },
+      {
+        path: '/sys-admin/product/category-list',
+        component: () => import('../views/sys-admin/product/CategoryListView.vue')
+      },
+    ]
   },
   {
     path: '/about',

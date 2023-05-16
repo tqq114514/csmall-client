@@ -25,8 +25,8 @@ export default {
     data() {
         return {
             ruleForm: {
-                username: '',
-                password:'',
+                username: 'root',
+                password: '123456',
 
             },
             rules: {
@@ -55,6 +55,12 @@ export default {
         resetForm(formName) {
             this.$refs[formName].resetFields();
         }
+    },
+    created() {
+        /*比如new好了对象*/
+    },
+    mounted() {
+        /*比如new好了对象，同时数据也准备好了*/
     }
 }
 </script>

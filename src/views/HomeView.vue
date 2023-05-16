@@ -28,11 +28,12 @@
                 <!-- 下半部分的左侧：侧边栏 -->
                 <el-aside class="layout-aside">
                     <el-menu
-                            default-active="1"
+                            :router="true"
+                            :default-active="activeMenuItemPath"
                             class="el-menu-vertical-demo"
-                            background-color="#545c64"
+                            background-color="#222"
                             text-color="#fff"
-                            active-text-color="#ffd04b">
+                            active-text-color="#fff">
                         <!-- 首页 -->
                         <el-menu-item index="1">
                             <i class="el-icon-house"></i>
@@ -53,11 +54,11 @@
                                 <i class="el-icon-circle-plus"></i>
                                 <span slot="title">新增SPU</span>
                             </el-menu-item>
-                            <el-menu-item index="2-3">
+                            <el-menu-item index="/sys-admin/product/album-list">
                                 <i class="el-icon-picture"></i>
                                 <span slot="title">相册管理</span>
                             </el-menu-item>
-                            <el-menu-item index="2-4">
+                            <el-menu-item index="/sys-admin/product/category-list">
                                 <i class="el-icon-s-unfold"></i>
                                 <span slot="title">商品类别</span>
                             </el-menu-item>
@@ -119,7 +120,8 @@
                 </el-aside>
                 <!-- 下半部分的右侧：主体 -->
                 <el-main class="layout-main">
-
+                    <!-- 将由其它视图组件来显示 -->
+                    <router-view/>
                 </el-main>
             </el-container>
         </el-container>
@@ -128,6 +130,15 @@
 </template>
 
 <style>
+.layout-aside i{
+    color: #fff !important;
+}
+.layout-aside .el-menu{
+    border: 0;
+}
+.el-menu-item.is-active{
+    background: #2c3e50 !important;
+}
 .el-menu *{
     overflow: hidden;
 }
@@ -154,16 +165,46 @@
 }
 
 .layout-body {
-    border: 5px black solid;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .layout-aside {
+    background: #222;
 }
 
 .layout-main {
-    border: 5px blue solid;
 }
 </style>
 
-<script setup>
+<script>
+export default {
+    data() {
+        return {
+            ruleForm: {
+                activeMenuItemPath:""
+            }
+        };
+    },
+    methods: {
+        handleActiveMenuItem(){
+            let currentPath = this.$router.currentRoute.fullPath;
+            if (currentPath.startsWith("/sys-admin/product/album-list")){
+                currentPath = '/sys-admin/product/album-list';
+            }
+            this.activeMenuItemPath = currentPath;
+        }
+    },
+    created() {
+        /*比如new好了对象*/
+    },
+    mounted() {
+        /*比如new好了对象，同时数据也准备好了*/
+        this.handleActiveMenuItem();
+
+    }
+}
 </script>
