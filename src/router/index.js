@@ -18,8 +18,12 @@ const routes = [
         component: () => import('../views/sys-admin/product/AlbumListView.vue')
       },
       {
-        path: '/sys-admin/product/category-list',
-        component: () => import('../views/sys-admin/product/CategoryListView.vue')
+        path: '/sys-admin/product/AttributeTemplate-list',
+        component: () => import('../views/sys-admin/product/AttributeTemplateListView.vue')
+      },
+      {
+        path: '/sys-admin/product/AttributeTemplate-list/add-new',
+        component: () => import('../views/sys-admin/product/AttributeTemplateAddNewView.vue')
       },
     ]
   },

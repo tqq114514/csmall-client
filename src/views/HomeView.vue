@@ -62,7 +62,7 @@
                                 <i class="el-icon-s-unfold"></i>
                                 <span slot="title">商品类别</span>
                             </el-menu-item>
-                            <el-menu-item index="2-5">
+                            <el-menu-item index="/sys-admin/product/AttributeTemplate-list">
                                 <i class="el-icon-s-flag"></i>
                                 <span slot="title">属性模板</span>
                             </el-menu-item>
@@ -194,6 +194,9 @@ export default {
             let currentPath = this.$router.currentRoute.fullPath;
             if (currentPath.startsWith("/sys-admin/product/album-list")){
                 currentPath = '/sys-admin/product/album-list';
+            }
+            if (currentPath.startsWith("/sys-admin/product/AttributeTemplate-list")){
+                currentPath = '/sys-admin/product/AttributeTemplate-list';
             }
             this.activeMenuItemPath = currentPath;
         }
