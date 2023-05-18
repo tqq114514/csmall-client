@@ -62,7 +62,7 @@
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">取 消</el-button>
-                <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+                <el-button type="primary" @click="submitEditForm">确 定</el-button>
             </div>
         </el-dialog>
     </div>
@@ -78,9 +78,10 @@ export default {
             currentPage:1,
             dialogFormVisible: false, /*修改嵌套表单内容*/
             editForm: {
+                id:'',
                 name: '',
                 description:'',
-                sort:''
+                sort:'',
             },
             formLabelWidth: '100px',
             rules: {
@@ -99,6 +100,39 @@ export default {
         }
     },
     methods: {
+        submitEditForm(){
+            let url = 'http://localhost:8080/album/update';
+            console.log('url = ' + url);
+
+            let formData = this.qs.stringify(this.editForm);
+            console.log('formData = ' + formData);
+
+            this.axios.post(url, formData).then((response) => {
+                let jsonResult = response.data;
+                if (jsonResult.state == 20000) {
+                    this.$message({
+                        message: '修改相册成功！',
+                        type: 'success'
+                    });
+                    this.dialogFormVisible = false;
+                    this.loadAlbumList();
+                } else if (jsonResult.state == 40400){
+                    this.$alert(jsonResult.message, '错误', {
+                        confirmButtonText: '确定',
+                        callback: action => {
+                            this.dialogFormVisible = false;
+                            this.loadAlbumList();
+                        }
+                    });
+                } else {
+                    this.$alert(jsonResult.message, '错误', {
+                        confirmButtonText: '确定',
+                        callback: action => {
+                        }
+                    });
+                }
+            });
+        },
         openEditDialog(album){
             let url = 'http://localhost:8080//album/standard?id='+album.id;
             console.log('url='+url);
