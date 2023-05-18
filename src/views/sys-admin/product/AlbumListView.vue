@@ -136,7 +136,7 @@ export default {
         openEditDialog(album){
             let url = 'http://localhost:8080//album/standard?id='+album.id;
             console.log('url='+url);
-            this.axios.post(url).then((response) => {
+            this.axios.get(url).then((response) => {
                 let jsonResult = response.data;
                 if (jsonResult.state == 20000){
                     this.editForm = jsonResult.data;
