@@ -111,7 +111,7 @@
                                 <i class="el-icon-s-check"></i>
                                 <span slot="title">权限管理</span>
                             </template>
-                            <el-menu-item index="6-1">
+                            <el-menu-item index="/sys-admin/permission/admin">
                                 <i class="el-icon-s-custom"></i>
                                 <span slot="title">管理员管理</span>
                             </el-menu-item>
@@ -184,9 +184,7 @@
 export default {
     data() {
         return {
-            ruleForm: {
                 activeMenuItemPath:""
-            }
         };
     },
     methods: {
@@ -197,6 +195,9 @@ export default {
             }
             if (currentPath.startsWith("/sys-admin/product/AttributeTemplate-list")){
                 currentPath = '/sys-admin/product/AttributeTemplate-list';
+            }
+            if (currentPath.startsWith("/sys-admin/permission/admin")){
+                currentPath = '/sys-admin/permission/admin';
             }
             this.activeMenuItemPath = currentPath;
         }
