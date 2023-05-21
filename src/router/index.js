@@ -25,6 +25,14 @@ const routes = [
         path: '/sys-admin/product/AttributeTemplate-list/add-new',
         component: () => import('../views/sys-admin/product/AttributeTemplateAddNewView.vue')
       },
+      {
+        path: '/sys-admin/product/brand-list',
+        component: () => import('../views/sys-admin/product/BrandListView.vue')
+      },
+      {
+        path: '/sys-admin/product/brand-list/add-new',
+        component: () => import('../views/sys-admin/product/BrandAddNewView.vue')
+      },
         /*权限管理相关*/
       {
         path: '/sys-admin/permission/admin/add-new',

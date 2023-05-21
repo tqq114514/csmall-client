@@ -70,7 +70,7 @@
                                 <i class="el-icon-s-ticket"></i>
                                 <span slot="title">属性管理</span>
                             </el-menu-item>
-                            <el-menu-item index="2-7">
+                            <el-menu-item index="/sys-admin/product/brand-list">
                                 <i class="el-icon-s-data"></i>
                                 <span slot="title">品牌管理</span>
                             </el-menu-item>
@@ -195,6 +195,9 @@ export default {
             }
             if (currentPath.startsWith("/sys-admin/product/AttributeTemplate-list")){
                 currentPath = '/sys-admin/product/AttributeTemplate-list';
+            }
+            if (currentPath.startsWith("/sys-admin/product/brand-list")){
+                currentPath = '/sys-admin/product/brand-list';
             }
             if (currentPath.startsWith("/sys-admin/permission/admin")){
                 currentPath = '/sys-admin/permission/admin';
